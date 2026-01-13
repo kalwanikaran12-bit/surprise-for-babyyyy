@@ -1,29 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cuteness Test</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { text-align:center; font-family:Arial; background:pink; padding:30px; }
-    .card { background:white; padding:30px; border-radius:20px; max-width:500px; margin:auto; display:none; }
-    button { padding:12px 25px; border-radius:20px; border:none; background:red; color:white; font-size:18px; }
-    .barbox { background:#eee; border-radius:20px; overflow:hidden; margin-top:20px; }
-    .bar { height:20px; width:0%; background:red; }
-  </style>
+<title>For My Babyyyy ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+  text-align:center;
+  padding:20px;
+}
+.card{
+  background:white;
+  border-radius:25px;
+  padding:25px;
+  max-width:700px;
+  margin:40px auto;
+  display:none;
+  box-shadow:0 0 20px pink;
+}
+h1,h2{color:#ff2f6d;}
+button{
+  background:linear-gradient(to right,#ff758c,#ff7eb3);
+  border:none;
+  color:white;
+  padding:12px 30px;
+  border-radius:30px;
+  font-size:18px;
+  cursor:pointer;
+  margin:10px;
+}
+img{
+  width:220px;
+  margin:10px;
+  border-radius:20px;
+  box-shadow:0 0 10px gray;
+}
+.barbox{
+  background:#eee;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:20px;
+}
+.bar{
+  height:20px;
+  width:0%;
+  background:linear-gradient(to right,#ff758c,#ff7eb3);
+}
+.balloon{
+  position:fixed;
+  bottom:-100px;
+  font-size:40px;
+  animation:fly 8s linear infinite;
+}
+@keyframes fly{
+  from{transform:translateY(0);}
+  to{transform:translateY(-120vh);}
+}
+</style>
 </head>
 
 <body>
 
+<!-- PAGE 1 -->
 <div class="card" id="p1" style="display:block;">
-  <h2>Do you love me? 😘</h2>
-  <button onclick="go()">Yes</button>
+  <h1>Hii meri babyyyy 😘😘😘</h1>
+  <p>You are the most beautiful girl in my world ❤️</p>
+  <button onclick="showPage(2)">Next</button>
 </div>
 
+<!-- PAGE 2 -->
 <div class="card" id="p2">
-  <h2>Let's check your cuteness 😘</h2>
-  <button onclick="start()">Next</button>
+  <h2>Do you love me? 😘</h2>
+  <button onclick="startCuteness()">Yes</button>
+  <button onclick="alert('Please select YES because I love you so much 😘')">No</button>
 </div>
 
+<!-- PAGE 3 LOADING -->
 <div class="card" id="p3">
   <h2>Loading your cuteness 😘</h2>
   <div class="barbox">
@@ -32,21 +87,97 @@
   <p id="per">0%</p>
 </div>
 
+<!-- PAGE 4 RESULT -->
 <div class="card" id="p4">
-  <h2>Ohh your cuteness is 150%+ 😘</h2>
-  <p>Because you are so beautiful 💖</p>
+  <h2>Your cuteness is 150%+ 😘</h2>
+  <p>We can't handle your cuteness because you are sooooo beautiful ❤️</p>
+  <button onclick="showPage(5)">Next</button>
+</div>
+
+<!-- PAGE 5 STORIES -->
+<div class="card" id="p5">
+  <h2>This is the screenshot of your stories ❤️</h2>
+  <img src="pic1.jpeg">
+  <img src="pic2.jpeg">
+  <br>
+  <button onclick="showPage(6)">Next</button>
+</div>
+
+<!-- PAGE 6 FIRST PICS -->
+<div class="card" id="p6">
+  <h2>You sent me your first pictures on 01/04/2025 ❤️</h2>
+  <img src="pic3.jpeg">
+  <img src="pic4.jpeg">
+  <img src="pic5.jpeg">
+  <img src="pic6.jpeg">
+  <br>
+  <button onclick="showPage(7)">Next</button>
+</div>
+
+<!-- PAGE 7 FIRST SNAP -->
+<div class="card" id="p7">
+  <h2>You sent me your first snap on 02/04/2025 ❤️</h2>
+  <img src="pic7.jpeg">
+  <br>
+  <button onclick="showPage(8)">Next</button>
+</div>
+
+<!-- PAGE 8 RELATIONSHIP -->
+<div class="card" id="p8">
+  <h2>We came into relationship on 25/05/2025 ❤️</h2>
+  <p>That was the best decision of my life 😘</p>
+  <button onclick="showPage(9)">Next</button>
+</div>
+
+<!-- PAGE 9 BALLOONS -->
+<div class="card" id="p9">
+  <h2>I ❤️ YOU</h2>
+  <p>Watch the balloons fly 😘</p>
+  <button onclick="showPage(10)">Next</button>
+</div>
+
+<!-- PAGE 10 FAVOURITE -->
+<div class="card" id="p10">
+  <h2>My Favourite Pictures 😘</h2>
+  <img src="pic1.jpeg">
+  <img src="pic2.jpeg">
+  <img src="pic3.jpeg">
+  <img src="pic4.jpeg">
+  <img src="pic5.jpeg">
+  <img src="pic6.jpeg">
+  <img src="pic7.jpeg">
+  <br>
+  <button onclick="showPage(11)">Next</button>
+</div>
+
+<!-- PAGE 11 LETTER -->
+<div class="card" id="p11">
+  <h2>My Love Letter For You 💌</h2>
+  <p>
+Dear Bhumii ❤️<br><br>
+You are the most beautiful part of my life.<br>
+Meeting you was the best thing that ever happened to me.<br>
+I love you so much and I always will 😘
+  </p>
+  <button onclick="showPage(12)">Next</button>
+</div>
+
+<!-- PAGE 12 BYE -->
+<div class="card" id="p12">
+  <h1>Byeee babyyyy 😘😘😘</h1>
+  <p>I LOVE YOU SOOOOO MUCH ❤️</p>
 </div>
 
 <script>
-function go(){
-  p1.style.display="none";
-  p2.style.display="block";
+function showPage(n){
+  for(let i=1;i<=12;i++){
+    document.getElementById("p"+i).style.display="none";
+  }
+  document.getElementById("p"+n).style.display="block";
 }
 
-function start(){
-  p2.style.display="none";
-  p3.style.display="block";
-
+function startCuteness(){
+  showPage(3);
   let x=0;
   let bar=document.getElementById("bar");
   let per=document.getElementById("per");
@@ -57,11 +188,20 @@ function start(){
     per.innerText=x+"%";
     if(x>=100){
       clearInterval(i);
-      p3.style.display="none";
-      p4.style.display="block";
+      showPage(4);
     }
   },200);
 }
+
+/* Balloons */
+setInterval(()=>{
+  let b=document.createElement("div");
+  b.className="balloon";
+  b.innerHTML="🎈";
+  b.style.left=Math.random()*100+"vw";
+  document.body.appendChild(b);
+  setTimeout(()=>b.remove(),8000);
+},600);
 </script>
 
 </body>
