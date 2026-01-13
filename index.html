@@ -7,25 +7,25 @@
 <style>
 body{
   margin:0;
-  font-family: Arial;
-  background: linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
-  min-height:100vh;
+  font-family:Arial;
   text-align:center;
-  overflow-x:hidden;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+  min-height:100vh;
+  padding:20px;
 }
 
 .card{
-  background: rgba(255,255,255,0.9);
+  background:rgba(255,255,255,0.9);
   border-radius:25px;
-  padding:30px;
-  max-width:700px;
-  margin:60px auto;
+  padding:25px;
+  max-width:800px;
+  margin:40px auto;
   box-shadow:0 0 25px rgba(255,105,180,0.6);
   display:none;
 }
 
 button{
-  background: linear-gradient(to right,#ff758c,#ff7eb3);
+  background:linear-gradient(to right,#ff758c,#ff7eb3);
   border:none;
   color:white;
   font-size:18px;
@@ -35,26 +35,78 @@ button{
   margin:10px;
 }
 
-.progress-box{
-  width:100%;
-  background:#eee;
+img{
+  width:220px;
+  margin:10px;
   border-radius:20px;
-  overflow:hidden;
-  margin-top:20px;
+  box-shadow:0 0 15px rgba(0,0,0,0.3);
 }
 
-.progress-bar{
-  height:20px;
-  width:0%;
-  background:linear-gradient(to right,#ff758c,#ff7eb3);
+.balloon{
+  width:180px;
+  height:230px;
+  background:pink;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+  margin:20px;
+  box-shadow:0 0 20px rgba(255,0,100,0.4);
 }
+
+.fly{
+  animation:flyUp 6s linear infinite;
+}
+
+@keyframes flyUp{
+  0%{transform:translateY(200px);}
+  100%{transform:translateY(-400px);}
+}
+
+.envelope{
+  width:360px;
+  height:260px;
+  background:#ffb6c1;
+  margin:30px auto;
+  position:relative;
+  border-radius:12px;
+  cursor:pointer;
+  overflow:hidden;
+}
+
+.flap{
+  width:100%;
+  height:100%;
+  background:#ff69b4;
+  position:absolute;
+  top:0;
+  left:0;
+  transform-origin:top;
+  transition:1s;
+  z-index:2;
+}
+
+.letter{
+  background:white;
+  position:absolute;
+  width:100%;
+  height:100%;
+  padding:20px;
+  top:100%;
+  transition:1s;
+  overflow-y:auto;
+  text-align:left;
+}
+
+.envelope.open .flap{transform:rotateX(180deg);}
+.envelope.open .letter{top:0;}
 
 .kiss{
   position:fixed;
   bottom:-50px;
   font-size:26px;
   animation:float 6s linear infinite;
-  opacity:0.8;
 }
 
 @keyframes float{
@@ -66,154 +118,134 @@ button{
 
 <body>
 
+<audio id="bgMusic" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
 <!-- PAGE 1 -->
 <div class="card" id="page1" style="display:block;">
-  <h1>Hii meri babyyyy 😘😘😘</h1>
-  <p>Do you love me? 💖</p>
-
-  <button onclick="startCuteness()">Yes</button>
-  <button onclick="alert('Please select yes because I love you so much 😘')">No</button>
+<h1>Hii meri babyyy 😘</h1>
+<button onclick="nextPage('page1','page2')">Next 💕</button>
 </div>
 
-<!-- PAGE 2 LOADING -->
+<!-- PAGE 2 -->
 <div class="card" id="page2">
-  <h2>Checking your cuteness 😘</h2>
-  <p>Your cuteness is too much for us to handle 😍</p>
-
-  <div class="progress-box">
-    <div class="progress-bar" id="bar"></div>
-  </div>
-  <p id="percent">0%</p>
+<h2>Do you love me? 🥺</h2>
+<button onclick="selectYes()">YES ❤️</button>
+<button onclick="selectNo()">NO 💔</button>
+<p id="loveMsg" style="color:red;font-weight:bold;"></p>
 </div>
 
-<!-- PAGE 3 RESULT -->
+<!-- PAGE 3 -->
 <div class="card" id="page3">
-  <h2>Ohhh your cuteness is 150%+ 😘🔥</h2>
-  <p>Because you are sooooo beautiful ❤️</p>
-
-  <button onclick="nextPage('page3','page4')">Next 😘</button>
+<h2>These are the screenshots I took from your stories 😘</h2>
+<img src="story1.jpeg">
+<img src="story2.jpeg">
+<br>
+<button onclick="nextPage('page3','page4')">Next 😘</button>
 </div>
 
-<!-- PAGE 4 STORIES -->
+<!-- PAGE 4 -->
 <div class="card" id="page4">
-  <h2>These are the screenshots I took from your stories 😘</h2>
-
-  <img src="story1.jpeg" width="250">
-  <img src="story2.jpeg" width="250">
-
-  <br><br>
-  <button onclick="nextPage('page4','page5')">Next 😘</button>
+<h2>You sent me your pictures for the first time on 01/04/2025 😘</h2>
+<img src="pic1.jpeg">
+<img src="pic2.jpeg">
+<img src="pic3.jpeg">
+<img src="pic4.jpeg">
+<br>
+<button onclick="nextPage('page4','page5')">Next 😘</button>
 </div>
 
-<!-- PAGE 5 FIRST PICS -->
+<!-- PAGE 5 -->
 <div class="card" id="page5">
-  <h2>You sent me your first pictures on 01/04/2025 😘</h2>
-
-  <img src="pic1.jpeg" width="200">
-  <img src="pic2.jpeg" width="200">
-  <img src="pic3.jpeg" width="200">
-  <img src="pic4.jpeg" width="200">
-
-  <br><br>
-  <button onclick="nextPage('page5','page6')">Next 😘</button>
+<h2>You sent me your first snap on 02/04/2025 😘</h2>
+<img src="snap1.jpeg">
+<br>
+<button onclick="nextPage('page5','page6')">Next 😘</button>
 </div>
 
-<!-- PAGE 6 SNAP -->
+<!-- PAGE 6 -->
 <div class="card" id="page6">
-  <h2>You sent me your first snap on 02/04/2025 😘</h2>
-
-  <img src="snap1.jpeg" width="250">
-
-  <br><br>
-  <button onclick="nextPage('page6','page7')">Next 😘</button>
+<h2>We came into a relationship on 25/05/2025 and it was the best decision of my life ❤️</h2>
+<button onclick="nextPage('page6','page7')">Next 😘</button>
 </div>
 
-<!-- PAGE 7 RELATIONSHIP -->
+<!-- PAGE 7 -->
 <div class="card" id="page7">
-  <h2>We came into a relationship on 25/05/2025 💖</h2>
-  <p>That was the best decision of my life 😘</p>
-
-  <button onclick="nextPage('page7','page8')">Next 😘</button>
+<h2>I LOVE YOU BABYYY 😘</h2>
+<div class="balloon fly">I</div>
+<div class="balloon fly">LOVE</div>
+<div class="balloon fly">YOU</div>
+<br>
+<button onclick="nextPage('page7','page8')">Next 😘</button>
 </div>
 
-<!-- PAGE 8 BALLOONS -->
+<!-- PAGE 8 -->
 <div class="card" id="page8">
-  <h2>I LOVE YOU 😘</h2>
-  <p style="font-size:50px;">🎈 🎈 🎈</p>
-
-  <button onclick="nextPage('page8','page9')">Next 😘</button>
+<h2>My Favourite Pictures 😘</h2>
+<img src="fav1.jpeg">
+<img src="fav2.jpeg">
+<img src="fav3.jpeg">
+<img src="fav4.jpeg">
+<img src="fav5.jpeg">
+<img src="fav6.jpeg">
+<img src="fav7.jpeg">
+<br>
+<button onclick="nextPage('page8','page9')">Next 😘</button>
 </div>
 
-<!-- PAGE 9 FAV -->
+<!-- PAGE 9 -->
 <div class="card" id="page9">
-  <h2>My Favourite Pictures 😘</h2>
+<h2>You got a love letter 😘</h2>
 
-  <img src="fav1.jpeg" width="200">
-  <img src="fav2.jpeg" width="200">
-  <img src="fav3.jpeg" width="200">
-  <img src="fav4.jpeg" width="200">
-  <img src="fav5.jpeg" width="200">
-  <img src="fav6.jpeg" width="200">
-  <img src="fav7.jpeg" width="200">
-
-  <br><br>
-  <button onclick="nextPage('page9','page10')">Next 😘</button>
-</div>
-
-<!-- PAGE 10 LETTER -->
-<div class="card" id="page10">
-  <h2>💌 A Letter For You 😘</h2>
-
+<div class="envelope" onclick="openLetter()">
+  <div class="flap"></div>
+  <div class="letter">
+  <h3>Dear Bhumii 😘</h3>
   <p>
-My love ❤️  
-You are my happiness, my peace and my everything.  
-I promise to always love you and take care of you 😘  
-</p>
-
-  <button onclick="nextPage('page10','page11')">Next 😘</button>
+  You are the most beautiful part of my life.  
+  Thank you for coming into my life and making me smile every day.  
+  I love you so much 😘
+  </p>
+  </div>
 </div>
 
-<!-- PAGE 11 -->
-<div class="card" id="page11">
-  <h1>Byeee Babyyyy 😘😘😘</h1>
-  <p>I love you forever ❤️</p>
+<button onclick="nextPage('page9','page10')">Next 😘</button>
+</div>
+
+<!-- PAGE 10 -->
+<div class="card" id="page10">
+<h1>Byeee babyyy 😘</h1>
+<h2>I LOVE YOU SOOO MUCH 💖</h2>
 </div>
 
 <script>
-function startCuteness(){
-  document.getElementById("page1").style.display="none";
-  document.getElementById("page2").style.display="block";
-
-  let progress=0;
-  let bar=document.getElementById("bar");
-  let percent=document.getElementById("percent");
-
-  let interval=setInterval(()=>{
-    progress+=5;
-    bar.style.width=progress+"%";
-    percent.innerText=progress+"%";
-
-    if(progress>=100){
-      clearInterval(interval);
-      document.getElementById("page2").style.display="none";
-      document.getElementById("page3").style.display="block";
-    }
-  },200);
+function nextPage(a,b){
+ document.getElementById(a).style.display="none";
+ document.getElementById(b).style.display="block";
 }
 
-function nextPage(cur,next){
-  document.getElementById(cur).style.display="none";
-  document.getElementById(next).style.display="block";
+function selectYes(){
+ document.getElementById("bgMusic").play();
+ nextPage("page2","page3");
 }
 
-/* flying kisses */
+function selectNo(){
+ document.getElementById("loveMsg").innerText=
+ "Please select YES because I love you soo much 😘";
+}
+
+function openLetter(){
+ document.querySelector(".envelope").classList.add("open");
+}
+
 setInterval(()=>{
-  const kiss=document.createElement("div");
-  kiss.className="kiss";
-  kiss.innerHTML="😘";
-  kiss.style.left=Math.random()*100+"vw";
-  document.body.appendChild(kiss);
-  setTimeout(()=>kiss.remove(),6000);
+ const k=document.createElement("div");
+ k.className="kiss";
+ k.innerHTML="😘";
+ k.style.left=Math.random()*100+"vw";
+ document.body.appendChild(k);
+ setTimeout(()=>k.remove(),6000);
 },500);
 </script>
 
