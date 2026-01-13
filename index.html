@@ -1,203 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>For My Baby ❤️</title>
+  <title>Cuteness Test</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      text-align: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
-      min-height: 100vh;
-      padding: 20px;
-      overflow-x: hidden;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.95);
-      border-radius: 20px;
-      padding: 25px;
-      max-width: 850px;
-      margin: 40px auto;
-      box-shadow: 0 0 20px rgba(255,105,180,0.6);
-      display: none;
-    }
-
-    h1, h2 { color: #ff2f6d; }
-
-    button {
-      background: linear-gradient(to right, #ff758c, #ff7eb3);
-      border: none;
-      color: white;
-      font-size: 18px;
-      padding: 12px 30px;
-      border-radius: 30px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-
-    img {
-      width: 230px;
-      margin: 10px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    }
-
-    .progress-box {
-      width: 100%;
-      background: #eee;
-      border-radius: 20px;
-      overflow: hidden;
-      margin-top: 20px;
-    }
-
-    .progress-bar {
-      height: 20px;
-      width: 0%;
-      background: linear-gradient(to right, #ff758c, #ff7eb3);
-    }
-
+    body { text-align:center; font-family:Arial; background:pink; padding:30px; }
+    .card { background:white; padding:30px; border-radius:20px; max-width:500px; margin:auto; display:none; }
+    button { padding:12px 25px; border-radius:20px; border:none; background:red; color:white; font-size:18px; }
+    .barbox { background:#eee; border-radius:20px; overflow:hidden; margin-top:20px; }
+    .bar { height:20px; width:0%; background:red; }
   </style>
 </head>
 
 <body>
 
-<audio id="bgMusic" loop>
-  <source src="song.mp3" type="audio/mpeg">
-</audio>
-
-<!-- PAGE 1 (Welcome) -->
-<div class="card" id="page1" style="display:block;">
-  <h1>Hii meri babyyy 😘😘😘</h1>
-  <button onclick="nextPage(1)">Next 😘</button>
-</div>
-
-<!-- PAGE 2 (Yes/No) -->
-<div class="card" id="page2">
+<div class="card" id="p1" style="display:block;">
   <h2>Do you love me? 😘</h2>
-  <button onclick="goToCuteness()">Yes 😘</button>
-  <button onclick="alert('Please select YES because I love you sooo much 😘')">No 😢</button>
+  <button onclick="go()">Yes</button>
 </div>
 
-<!-- PAGE 3 (Cuteness Start) -->
-<div class="card" id="page3">
-  <h2>Let’s check your cuteness 😘✨</h2>
-  <button onclick="startCuteness()">Next 😘</button>
+<div class="card" id="p2">
+  <h2>Let's check your cuteness 😘</h2>
+  <button onclick="start()">Next</button>
 </div>
 
-<!-- CUTENESS LOADING -->
-<div class="card" id="pageLoading">
-  <h2>Loading your cuteness... 😘💖</h2>
-  <div class="progress-box">
-    <div class="progress-bar" id="progressBar"></div>
+<div class="card" id="p3">
+  <h2>Loading your cuteness 😘</h2>
+  <div class="barbox">
+    <div class="bar" id="bar"></div>
   </div>
-  <p id="percent">0%</p>
+  <p id="per">0%</p>
 </div>
 
-<!-- CUTENESS RESULT -->
-<div class="card" id="pageResult">
-  <h2>Ohh your cuteness is 150%+ 😘✨</h2>
-  <p>Because you are so beautiful 💖😍</p>
-  <button onclick="goToStories()">Next 😘</button>
-</div>
-
-<!-- STORIES PAGE -->
-<div class="card" id="page4">
-  <h2>These are the screenshots I took from your stories 😘</h2>
-  <img src="photo1.jpeg">
-  <img src="photo2.jpeg">
-  <br><button onclick="nextPage(4)">Next 😘</button>
-</div>
-
-<!-- FIRST PICS -->
-<div class="card" id="page5">
-  <h2>You sent me your first pictures on 01/04/2025 😘</h2>
-  <img src="photo3.jpeg">
-  <img src="photo4.jpeg">
-  <img src="photo5.jpeg">
-  <img src="photo6.jpeg">
-  <br><button onclick="nextPage(5)">Next 😘</button>
-</div>
-
-<!-- FIRST SNAP -->
-<div class="card" id="page6">
-  <h2>You sent me your first snap on 02/04/2025 😘</h2>
-  <img src="photo7.jpeg">
-  <br><button onclick="nextPage(6)">Next 😘</button>
-</div>
-
-<!-- RELATIONSHIP DAY -->
-<div class="card" id="page7">
-  <h2>We came into relationship on 25/05/2025 😘<br>Best decision of my life ❤️</h2>
-  <button onclick="nextPage(7)">Next 😘</button>
-</div>
-
-<!-- FAVOURITE PICS -->
-<div class="card" id="page8">
-  <h2>My Favourite Pictures 😘</h2>
-  <img src="photo1.jpeg">
-  <img src="photo2.jpeg">
-  <img src="photo3.jpeg">
-  <img src="photo4.jpeg">
-  <img src="photo5.jpeg">
-  <img src="photo6.jpeg">
-  <img src="photo7.jpeg">
-  <br><button onclick="nextPage(8)">Next 😘</button>
-</div>
-
-<!-- LOVE LETTER -->
-<div class="card" id="page9">
-  <h2>Dear Bhumii 😘</h2>
-  <p>You are my world and I love you so much 💖</p>
-  <button onclick="nextPage(9)">Next 😘</button>
-</div>
-
-<!-- BYE PAGE -->
-<div class="card" id="page10">
-  <h1>Byeee babyyyy 😘😘😘</h1>
-  <p>I LOVE YOU SO MUCH ❤️</p>
+<div class="card" id="p4">
+  <h2>Ohh your cuteness is 150%+ 😘</h2>
+  <p>Because you are so beautiful 💖</p>
 </div>
 
 <script>
-function nextPage(n){
-  document.getElementById("page"+n).style.display = "none";
-  document.getElementById("page"+(n+1)).style.display = "block";
+function go(){
+  p1.style.display="none";
+  p2.style.display="block";
 }
 
-function goToCuteness(){
-  document.getElementById("page2").style.display = "none";
-  document.getElementById("page3").style.display = "block";
-}
+function start(){
+  p2.style.display="none";
+  p3.style.display="block";
 
-function startCuteness(){
-  document.getElementById("page3").style.display = "none";
-  document.getElementById("pageLoading").style.display = "block";
-  document.getElementById("bgMusic").play();
-  startLoading();
-}
+  let x=0;
+  let bar=document.getElementById("bar");
+  let per=document.getElementById("per");
 
-function startLoading(){
-  let progress = 0;
-  let bar = document.getElementById("progressBar");
-  let percent = document.getElementById("percent");
-
-  let interval = setInterval(()=>{
-    progress += 5;
-    bar.style.width = progress + "%";
-    percent.innerText = progress+"%";
-    if(progress >= 100){
-      clearInterval(interval);
-      document.getElementById("pageLoading").style.display = "none";
-      document.getElementById("pageResult").style.display = "block";
+  let i=setInterval(()=>{
+    x+=5;
+    bar.style.width=x+"%";
+    per.innerText=x+"%";
+    if(x>=100){
+      clearInterval(i);
+      p3.style.display="none";
+      p4.style.display="block";
     }
   },200);
-}
-
-function goToStories(){
-  document.getElementById("pageResult").style.display = "none";
-  document.getElementById("page4").style.display = "block";
 }
 </script>
 
