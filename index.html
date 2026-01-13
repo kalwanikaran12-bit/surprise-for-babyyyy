@@ -49,6 +49,7 @@ button{
   background:linear-gradient(to right,#ff758c,#ff7eb3);
 }
 
+/* Flying kisses */
 .kiss{
   position:fixed;
   bottom:-50px;
@@ -61,22 +62,44 @@ button{
   0%{transform:translateY(0);}
   100%{transform:translateY(-110vh);}
 }
+
+/* Balloons */
+.balloon{
+  position:fixed;
+  bottom:-100px;
+  font-size:60px;
+  animation:floatBalloon 8s linear infinite;
+}
+
+@keyframes floatBalloon{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-120vh);}
+}
 </style>
 </head>
 
 <body>
 
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
 <!-- PAGE 1 -->
 <div class="card" id="page1" style="display:block;">
   <h1>Hii meri babyyyy 😘😘😘</h1>
-  <p>Do you love me? 💖</p>
+  <button onclick="nextPage('page1','page2')">Next 😘</button>
+</div>
 
-  <button onclick="startCuteness()">Yes</button>
+<!-- PAGE 2 -->
+<div class="card" id="page2">
+  <h2>Do you love me? 💖</h2>
+  <button onclick="startCuteness()">Yes 😘</button>
   <button onclick="alert('Please select yes because I love you so much 😘')">No</button>
 </div>
 
-<!-- PAGE 2 LOADING -->
-<div class="card" id="page2">
+<!-- PAGE 3 LOADING -->
+<div class="card" id="page3">
   <h2>Checking your cuteness 😘</h2>
   <p>Your cuteness is too much for us to handle 😍</p>
 
@@ -86,27 +109,27 @@ button{
   <p id="percent">0%</p>
 </div>
 
-<!-- PAGE 3 RESULT -->
-<div class="card" id="page3">
+<!-- PAGE 4 RESULT -->
+<div class="card" id="page4">
   <h2>Ohhh your cuteness is 150%+ 😘🔥</h2>
   <p>Because you are sooooo beautiful ❤️</p>
 
-  <button onclick="nextPage('page3','page4')">Next 😘</button>
+  <button onclick="nextPage('page4','page5')">Next 😘</button>
 </div>
 
-<!-- PAGE 4 STORIES -->
-<div class="card" id="page4">
+<!-- PAGE 5 STORIES -->
+<div class="card" id="page5">
   <h2>These are the screenshots I took from your stories 😘</h2>
 
   <img src="story1.jpeg" width="250">
   <img src="story2.jpeg" width="250">
 
   <br><br>
-  <button onclick="nextPage('page4','page5')">Next 😘</button>
+  <button onclick="nextPage('page5','page6')">Next 😘</button>
 </div>
 
-<!-- PAGE 5 FIRST PICS -->
-<div class="card" id="page5">
+<!-- PAGE 6 FIRST PICS -->
+<div class="card" id="page6">
   <h2>You sent me your first pictures on 01/04/2025 😘</h2>
 
   <img src="pic1.jpeg" width="200">
@@ -115,37 +138,37 @@ button{
   <img src="pic4.jpeg" width="200">
 
   <br><br>
-  <button onclick="nextPage('page5','page6')">Next 😘</button>
+  <button onclick="nextPage('page6','page7')">Next 😘</button>
 </div>
 
-<!-- PAGE 6 SNAP -->
-<div class="card" id="page6">
+<!-- PAGE 7 SNAP -->
+<div class="card" id="page7">
   <h2>You sent me your first snap on 02/04/2025 😘</h2>
 
   <img src="snap1.jpeg" width="250">
 
   <br><br>
-  <button onclick="nextPage('page6','page7')">Next 😘</button>
-</div>
-
-<!-- PAGE 7 RELATIONSHIP -->
-<div class="card" id="page7">
-  <h2>We came into a relationship on 25/05/2025 💖</h2>
-  <p>That was the best decision of my life 😘</p>
-
   <button onclick="nextPage('page7','page8')">Next 😘</button>
 </div>
 
-<!-- PAGE 8 BALLOONS -->
+<!-- PAGE 8 RELATIONSHIP -->
 <div class="card" id="page8">
-  <h2>I LOVE YOU 😘</h2>
-  <p style="font-size:50px;">🎈 🎈 🎈</p>
+  <h2>We came into a relationship on 25/05/2025 💖</h2>
+  <p>That was the best decision of my life 😘</p>
 
-  <button onclick="nextPage('page8','page9')">Next 😘</button>
+  <button onclick="nextPage('page8','page9'); startBalloons();">Next 😘</button>
 </div>
 
-<!-- PAGE 9 FAV -->
+<!-- PAGE 9 BALLOONS -->
 <div class="card" id="page9">
+  <h2>I LOVE YOU 😘</h2>
+  <p style="font-size:50px;">🎈 I 🎈 LOVE 🎈 YOU</p>
+
+  <button onclick="nextPage('page9','page10')">Next 😘</button>
+</div>
+
+<!-- PAGE 10 FAV -->
+<div class="card" id="page10">
   <h2>My Favourite Pictures 😘</h2>
 
   <img src="fav1.jpeg" width="200">
@@ -157,32 +180,31 @@ button{
   <img src="fav7.jpeg" width="200">
 
   <br><br>
-  <button onclick="nextPage('page9','page10')">Next 😘</button>
+  <button onclick="nextPage('page10','page11')">Next 😘</button>
 </div>
 
-<!-- PAGE 10 LETTER -->
-<div class="card" id="page10">
+<!-- PAGE 11 LETTER -->
+<div class="card" id="page11">
   <h2>💌 A Letter For You 😘</h2>
-
   <p>
 My love ❤️  
 You are my happiness, my peace and my everything.  
 I promise to always love you and take care of you 😘  
 </p>
 
-  <button onclick="nextPage('page10','page11')">Next 😘</button>
+  <button onclick="nextPage('page11','page12')">Next 😘</button>
 </div>
 
-<!-- PAGE 11 -->
-<div class="card" id="page11">
+<!-- PAGE 12 -->
+<div class="card" id="page12">
   <h1>Byeee Babyyyy 😘😘😘</h1>
   <p>I love you forever ❤️</p>
 </div>
 
 <script>
 function startCuteness(){
-  document.getElementById("page1").style.display="none";
-  document.getElementById("page2").style.display="block";
+  document.getElementById("page2").style.display="none";
+  document.getElementById("page3").style.display="block";
 
   let progress=0;
   let bar=document.getElementById("bar");
@@ -195,8 +217,8 @@ function startCuteness(){
 
     if(progress>=100){
       clearInterval(interval);
-      document.getElementById("page2").style.display="none";
-      document.getElementById("page3").style.display="block";
+      document.getElementById("page3").style.display="none";
+      document.getElementById("page4").style.display="block";
     }
   },200);
 }
@@ -215,6 +237,18 @@ setInterval(()=>{
   document.body.appendChild(kiss);
   setTimeout(()=>kiss.remove(),6000);
 },500);
+
+/* floating balloons */
+function startBalloons(){
+  setInterval(()=>{
+    const b=document.createElement("div");
+    b.className="balloon";
+    b.innerHTML="🎈";
+    b.style.left=Math.random()*100+"vw";
+    document.body.appendChild(b);
+    setTimeout(()=>b.remove(),8000);
+  },600);
+}
 </script>
 
 </body>
