@@ -1,63 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>For My Babyyyy ❤️</title>
+<title>For My Baby ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{
   margin:0;
-  font-family:Arial;
-  background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+  font-family: Arial;
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+  min-height:100vh;
   text-align:center;
-  padding:20px;
+  overflow-x:hidden;
 }
+
 .card{
-  background:white;
+  background: rgba(255,255,255,0.9);
   border-radius:25px;
-  padding:25px;
+  padding:30px;
   max-width:700px;
-  margin:40px auto;
+  margin:60px auto;
+  box-shadow:0 0 25px rgba(255,105,180,0.6);
   display:none;
-  box-shadow:0 0 20px pink;
 }
-h1,h2{color:#ff2f6d;}
+
 button{
-  background:linear-gradient(to right,#ff758c,#ff7eb3);
+  background: linear-gradient(to right,#ff758c,#ff7eb3);
   border:none;
   color:white;
+  font-size:18px;
   padding:12px 30px;
   border-radius:30px;
-  font-size:18px;
   cursor:pointer;
   margin:10px;
 }
-img{
-  width:220px;
-  margin:10px;
-  border-radius:20px;
-  box-shadow:0 0 10px gray;
-}
-.barbox{
+
+.progress-box{
+  width:100%;
   background:#eee;
   border-radius:20px;
   overflow:hidden;
   margin-top:20px;
 }
-.bar{
+
+.progress-bar{
   height:20px;
   width:0%;
   background:linear-gradient(to right,#ff758c,#ff7eb3);
 }
-.balloon{
+
+.kiss{
   position:fixed;
-  bottom:-100px;
-  font-size:40px;
-  animation:fly 8s linear infinite;
+  bottom:-50px;
+  font-size:26px;
+  animation:float 6s linear infinite;
+  opacity:0.8;
 }
-@keyframes fly{
-  from{transform:translateY(0);}
-  to{transform:translateY(-120vh);}
+
+@keyframes float{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-110vh);}
 }
 </style>
 </head>
@@ -65,143 +67,154 @@ img{
 <body>
 
 <!-- PAGE 1 -->
-<div class="card" id="p1" style="display:block;">
+<div class="card" id="page1" style="display:block;">
   <h1>Hii meri babyyyy 😘😘😘</h1>
-  <p>You are the most beautiful girl in my world ❤️</p>
-  <button onclick="showPage(2)">Next</button>
-</div>
+  <p>Do you love me? 💖</p>
 
-<!-- PAGE 2 -->
-<div class="card" id="p2">
-  <h2>Do you love me? 😘</h2>
   <button onclick="startCuteness()">Yes</button>
-  <button onclick="alert('Please select YES because I love you so much 😘')">No</button>
+  <button onclick="alert('Please select yes because I love you so much 😘')">No</button>
 </div>
 
-<!-- PAGE 3 LOADING -->
-<div class="card" id="p3">
-  <h2>Loading your cuteness 😘</h2>
-  <div class="barbox">
-    <div class="bar" id="bar"></div>
+<!-- PAGE 2 LOADING -->
+<div class="card" id="page2">
+  <h2>Checking your cuteness 😘</h2>
+  <p>Your cuteness is too much for us to handle 😍</p>
+
+  <div class="progress-box">
+    <div class="progress-bar" id="bar"></div>
   </div>
-  <p id="per">0%</p>
+  <p id="percent">0%</p>
 </div>
 
-<!-- PAGE 4 RESULT -->
-<div class="card" id="p4">
-  <h2>Your cuteness is 150%+ 😘</h2>
-  <p>We can't handle your cuteness because you are sooooo beautiful ❤️</p>
-  <button onclick="showPage(5)">Next</button>
+<!-- PAGE 3 RESULT -->
+<div class="card" id="page3">
+  <h2>Ohhh your cuteness is 150%+ 😘🔥</h2>
+  <p>Because you are sooooo beautiful ❤️</p>
+
+  <button onclick="nextPage('page3','page4')">Next 😘</button>
 </div>
 
-<!-- PAGE 5 STORIES -->
-<div class="card" id="p5">
-  <h2>This is the screenshot of your stories ❤️</h2>
-  <img src="pic1.jpeg">
-  <img src="pic2.jpeg">
-  <br>
-  <button onclick="showPage(6)">Next</button>
+<!-- PAGE 4 STORIES -->
+<div class="card" id="page4">
+  <h2>These are the screenshots I took from your stories 😘</h2>
+
+  <img src="story1.jpeg" width="250">
+  <img src="story2.jpeg" width="250">
+
+  <br><br>
+  <button onclick="nextPage('page4','page5')">Next 😘</button>
 </div>
 
-<!-- PAGE 6 FIRST PICS -->
-<div class="card" id="p6">
-  <h2>You sent me your first pictures on 01/04/2025 ❤️</h2>
-  <img src="pic3.jpeg">
-  <img src="pic4.jpeg">
-  <img src="pic5.jpeg">
-  <img src="pic6.jpeg">
-  <br>
-  <button onclick="showPage(7)">Next</button>
+<!-- PAGE 5 FIRST PICS -->
+<div class="card" id="page5">
+  <h2>You sent me your first pictures on 01/04/2025 😘</h2>
+
+  <img src="pic1.jpeg" width="200">
+  <img src="pic2.jpeg" width="200">
+  <img src="pic3.jpeg" width="200">
+  <img src="pic4.jpeg" width="200">
+
+  <br><br>
+  <button onclick="nextPage('page5','page6')">Next 😘</button>
 </div>
 
-<!-- PAGE 7 FIRST SNAP -->
-<div class="card" id="p7">
-  <h2>You sent me your first snap on 02/04/2025 ❤️</h2>
-  <img src="pic7.jpeg">
-  <br>
-  <button onclick="showPage(8)">Next</button>
+<!-- PAGE 6 SNAP -->
+<div class="card" id="page6">
+  <h2>You sent me your first snap on 02/04/2025 😘</h2>
+
+  <img src="snap1.jpeg" width="250">
+
+  <br><br>
+  <button onclick="nextPage('page6','page7')">Next 😘</button>
 </div>
 
-<!-- PAGE 8 RELATIONSHIP -->
-<div class="card" id="p8">
-  <h2>We came into relationship on 25/05/2025 ❤️</h2>
+<!-- PAGE 7 RELATIONSHIP -->
+<div class="card" id="page7">
+  <h2>We came into a relationship on 25/05/2025 💖</h2>
   <p>That was the best decision of my life 😘</p>
-  <button onclick="showPage(9)">Next</button>
+
+  <button onclick="nextPage('page7','page8')">Next 😘</button>
 </div>
 
-<!-- PAGE 9 BALLOONS -->
-<div class="card" id="p9">
-  <h2>I ❤️ YOU</h2>
-  <p>Watch the balloons fly 😘</p>
-  <button onclick="showPage(10)">Next</button>
+<!-- PAGE 8 BALLOONS -->
+<div class="card" id="page8">
+  <h2>I LOVE YOU 😘</h2>
+  <p style="font-size:50px;">🎈 🎈 🎈</p>
+
+  <button onclick="nextPage('page8','page9')">Next 😘</button>
 </div>
 
-<!-- PAGE 10 FAVOURITE -->
-<div class="card" id="p10">
+<!-- PAGE 9 FAV -->
+<div class="card" id="page9">
   <h2>My Favourite Pictures 😘</h2>
-  <img src="pic1.jpeg">
-  <img src="pic2.jpeg">
-  <img src="pic3.jpeg">
-  <img src="pic4.jpeg">
-  <img src="pic5.jpeg">
-  <img src="pic6.jpeg">
-  <img src="pic7.jpeg">
-  <br>
-  <button onclick="showPage(11)">Next</button>
+
+  <img src="fav1.jpeg" width="200">
+  <img src="fav2.jpeg" width="200">
+  <img src="fav3.jpeg" width="200">
+  <img src="fav4.jpeg" width="200">
+  <img src="fav5.jpeg" width="200">
+  <img src="fav6.jpeg" width="200">
+  <img src="fav7.jpeg" width="200">
+
+  <br><br>
+  <button onclick="nextPage('page9','page10')">Next 😘</button>
 </div>
 
-<!-- PAGE 11 LETTER -->
-<div class="card" id="p11">
-  <h2>My Love Letter For You 💌</h2>
+<!-- PAGE 10 LETTER -->
+<div class="card" id="page10">
+  <h2>💌 A Letter For You 😘</h2>
+
   <p>
-Dear Bhumii ❤️<br><br>
-You are the most beautiful part of my life.<br>
-Meeting you was the best thing that ever happened to me.<br>
-I love you so much and I always will 😘
-  </p>
-  <button onclick="showPage(12)">Next</button>
+My love ❤️  
+You are my happiness, my peace and my everything.  
+I promise to always love you and take care of you 😘  
+</p>
+
+  <button onclick="nextPage('page10','page11')">Next 😘</button>
 </div>
 
-<!-- PAGE 12 BYE -->
-<div class="card" id="p12">
-  <h1>Byeee babyyyy 😘😘😘</h1>
-  <p>I LOVE YOU SOOOOO MUCH ❤️</p>
+<!-- PAGE 11 -->
+<div class="card" id="page11">
+  <h1>Byeee Babyyyy 😘😘😘</h1>
+  <p>I love you forever ❤️</p>
 </div>
 
 <script>
-function showPage(n){
-  for(let i=1;i<=12;i++){
-    document.getElementById("p"+i).style.display="none";
-  }
-  document.getElementById("p"+n).style.display="block";
-}
-
 function startCuteness(){
-  showPage(3);
-  let x=0;
-  let bar=document.getElementById("bar");
-  let per=document.getElementById("per");
+  document.getElementById("page1").style.display="none";
+  document.getElementById("page2").style.display="block";
 
-  let i=setInterval(()=>{
-    x+=5;
-    bar.style.width=x+"%";
-    per.innerText=x+"%";
-    if(x>=100){
-      clearInterval(i);
-      showPage(4);
+  let progress=0;
+  let bar=document.getElementById("bar");
+  let percent=document.getElementById("percent");
+
+  let interval=setInterval(()=>{
+    progress+=5;
+    bar.style.width=progress+"%";
+    percent.innerText=progress+"%";
+
+    if(progress>=100){
+      clearInterval(interval);
+      document.getElementById("page2").style.display="none";
+      document.getElementById("page3").style.display="block";
     }
   },200);
 }
 
-/* Balloons */
+function nextPage(cur,next){
+  document.getElementById(cur).style.display="none";
+  document.getElementById(next).style.display="block";
+}
+
+/* flying kisses */
 setInterval(()=>{
-  let b=document.createElement("div");
-  b.className="balloon";
-  b.innerHTML="🎈";
-  b.style.left=Math.random()*100+"vw";
-  document.body.appendChild(b);
-  setTimeout(()=>b.remove(),8000);
-},600);
+  const kiss=document.createElement("div");
+  kiss.className="kiss";
+  kiss.innerHTML="😘";
+  kiss.style.left=Math.random()*100+"vw";
+  document.body.appendChild(kiss);
+  setTimeout(()=>kiss.remove(),6000);
+},500);
 </script>
 
 </body>
